@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>تطبيق بنكي متكامل</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* كود التثبيت الذي أضفناه */
+        html, body {
+            overflow-x: hidden;
+            overscroll-behavior-y: contain;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            touch-action: manipulation;
+        }
+        input { font-size: 16px !important; }
+    </style>
+</head>
+<body>
+
+    <div id="screen-1" class="app-screen">
+        <header class="main-header">
+            <div class="header-left">
+                <div class="menu-bars"><span></span><span></span><span></span></div>
+            </div>
+            <div class="header-right">
+                <div class="header-actions">
+                    <img src="https://i.imgur.com/MM1VCIf.png" class="header-custom-icon">
+                    <div class="notification-container" id="open-notifications" style="cursor: pointer;">
+                        <span class="badge-outline" id="notif-badge">0</span>
+                        <i class="far fa-bell bell-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="page-body">
+            <div class="white-balance-card">
+                <div class="welcome-text shifted">مرحباً، Marwa Raed Abed Al-Azez<br>Younis</div>
+                <div class="account-type-label shifted medium-weight">حساب الشيقل</div>
+                <div class="balance-line-container-left">
+                    <span class="amount-number-system">44.91</span>
+                    <span class="currency-label-thin">شيقل</span>
+                </div>
+            </div>
+
+            <div class="info-strip-row compact-strip">
+                <span class="strip-label sky-blue-thin">حساب الدولار</span>
+                <span class="strip-value">0.00 دولار أمريكي</span>
+            </div>
+            <div class="info-strip-row compact-strip">
+                <span class="strip-label black-thin">حساب الدينار</span>
+                <span class="strip-value">0.000 دينار أردني</span>
+            </div>
+
+            <div id="toggle-services" class="all-services-title-left">عرض الكل (17)</div>
+            <div id="services-grid" class="services-layout-grid">
+                <div class="service-card"><img src="https://i.imgur.com/D0TBrWi.png"></div>
+                <div class="service-card"><img src="https://i.imgur.com/2AyY1bb.png"></div>
+                <div class="service-card"><img src="https://i.imgur.com/KUZ3U3P.png"></div>
+                <div class="service-card"><img src="https://i.imgur.com/uFu47Ca.png"></div>
+                <div class="service-card"><img src="https://i.imgur.com/akR2BaC.png"></div>
+                <div class="service-card"><img src="https://i.imgur.com/0rSFcwh.png"></div>
+                <div class="service-card" id="to-s2"><img src="https://i.imgur.com/N8U54KA.png"></div>
+                <div class="service-card"><img src="https://i.imgur.com/wL8yApL.png"></div>
+                <div class="service-card"><img src="https://i.imgur.com/25NHiLB.png"></div>
+                <div class="service-card"><img src="https://i.imgur.com/Q9YYfAQ.png"></div>
+                <div class="service-card"><img src="https://i.imgur.com/Pq4XHK7.png"></div>
+                <div class="service-card"><img src="https://i.imgur.com/ubpbqLa.png"></div>
+                <div class="service-card"><img src="https://i.imgur.com/zhISrIX.png"></div>
+                <div class="service-card"><img src="https://i.imgur.com/88qkrOi.png"></div>
+                <div class="service-card"><img src="https://i.imgur.com/3R4f4xF.png"></div>
+                <div class="service-card"><img src="https://i.imgur.com/3ag3hOW.png"></div>
+                <div class="service-card"><img src="https://i.imgur.com/0YTDwuy.png"></div>
+            </div>
+        </main>
+    </div>
+
+    <div id="screen-2" class="payment-view" style="display:none;">
+        <header class="main-header">
+            <div class="header-left">
+                <i class="fas fa-arrow-right back-arrow" id="back-to-s1"></i>
+            </div>
+        </header>
+        <div class="main-content"> <div class="container">
+                <h1 class="main-title">الدفع لصديق</h1>
+                <div class="payment-card" id="to-s3">
+                    <img src="https://i.imgur.com/jr0pNcr.png" alt="Payment Icon" class="payment-img">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="screen-3" class="friends-view" style="display:none;">
+        <header class="main-header">
+            <div class="header-left">
+                <i class="fas fa-arrow-right back-arrow" id="back-to-s2"></i>
+            </div>
+        </header>
+        <div class="main-content"> <div class="app-wrapper">
+                <h1 class="page-main-title adjusted-title">الأصدقاء</h1>
+                <div class="search-container">
+                    <input type="text" placeholder="بحث" class="search-field">
+                </div>
+                <section class="section">
+                    <h2 class="sub-title thin-title">اخر جهات الاتصال</h2>
+                    <div class="horizontal-scroll no-scrollbar">
+                        <div class="contact-card">
+                            <div class="logo-wrapper hani-logo">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsBGlRu3lHxzkgUR-nnflMv6GdZCm3UooakEJDQAXXAnIy2cNjCbc6h1Qo&s=10" class="card-logo">
+                            </div>
+                            <div class="card-text">
+                                <span class="name-medium main-name">هاني محمد جادالله</span>
+                                <span class="name-medium sub-name">ابو الحصين</span>
+                                <span class="phone-dark-gray">0595056531</span>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                            <div class="logo-wrapper rajab-logo-xl">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo-2NOar_qcerlGh166EDRRqtax-y9FOS0Kc3sIEkBk078sxawPAvRbAV7&s=10" class="card-logo">
+                            </div>
+                            <div class="card-text">
+                                <span class="name-medium">رجب احمد مصطفى ابر</span>
+                                <span class="phone-dark-gray">598877715</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="section">
+                    <h2 class="sub-title thin-title">من جهات الاتصال</h2>
+                    <div class="vertical-list">
+                        <div class="list-item">
+                            <div class="avatar-circle">م م</div>
+                            <div class="contact-info">
+                                <p class="name-dark-gray">محمد وائل محمد مصلح</p>
+                                <p class="phone-dark-gray-large">0597586061</p>
+                            </div>
+                        </div>
+                        <div class="list-item">
+                            <div class="avatar-circle">ع ع</div>
+                            <div class="contact-info">
+                                <p class="name-dark-gray">عبدالكريم عاشور ضهير</p>
+                                <p class="phone-dark-gray-large">0592852929</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="fab-btn-bright-purple">+</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="screen-4" class="app-screen" style="display:none;">
+        <header class="main-header">
+            <div class="header-left">
+                <i class="fas fa-arrow-right back-arrow" id="back-from-4"></i>
+            </div>
+        </header>
+        <div class="main-content"> <main class="content" style="padding: 20px;">
+                <h1 class="main-title">صديقك من جهات الاتصال</h1>
+                <div class="form-group">
+                    <input type="text" placeholder="رقم الموبايل" class="input-field">
+                </div>
+                <div class="form-group row">
+                    <input type="text" placeholder="المبلغ" class="input-field amount-input">
+                    <div class="currency-badge">شيكل</div>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="الوصف" class="input-field description-input">
+                </div>
+                <button class="pay-button" id="openSheetBtn">ادفع</button>
+            </main>
+        </div>
+
+        <div class="overlay" id="overlay"></div>
+        <div class="bottom-sheet" id="bottomSheet">
+            <div class="sheet-header no-border">
+                <span class="close-text" id="closeSheetBtn">أغلق</span>
+            </div>
+            <div class="sheet-body">
+                <div class="bank-item" data-target="palestine">
+                    <div class="bank-right-side">
+                        <img src="https://i.imgur.com/gGxRiQb.jpeg" class="bank-logo-xl" alt="Logo">
+                        <span class="bank-name">البنك الاسلامي العربي</span>
+                    </div>
+                </div>
+                <div class="bank-item" data-target="palpay">
+                    <div class="bank-right-side">
+                        <img src="https://i.imgur.com/gGxRiQb.jpeg" class="bank-logo-xl" alt="Logo">
+                        <span class="bank-name">بنك فلسطين</span>
+                    </div>
+                </div>
+                <div class="bank-item no-bottom-border" data-target="palpay-wallet">
+                    <div class="bank-right-side">
+                        <img src="https://i.imgur.com/gGxRiQb.jpeg" class="bank-logo-xl" alt="Logo">
+                        <span class="bank-name">محفظة بال باي</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="screen-5" class="app-screen" style="display:none;">
+        <header class="main-header">
+            <div class="header-left">
+                <i class="fas fa-arrow-right back-arrow" id="back-from-5"></i>
+            </div>
+        </header>
+        <div class="main-content"> <div class="app-container" style="padding: 20px;">
+                <h1 class="main-title">تأكيد</h1>
+                <div class="transaction-details">
+                    <div class="row">
+                        <span class="label">من حساب</span>
+                        <span class="value">حساب الشيقل</span>
+                    </div>
+                    <div class="row">
+                        <span class="label">إلى</span>
+                        <div class="recipient-info">
+                            <div class="palpay-icon" id="recipientIcon"></div>
+                            <div class="text-group">
+                                <span class="name" id="recipientName">طلعت محمد موسى الفقيعاوي</span>
+                                <span class="phone" id="recipientPhone">0599267682</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-separator">
+                        <span class="label">المبلغ</span>
+                        <span class="value" id="amount-s5">ILS 0</span>
+                    </div>
+                    <div class="row">
+                        <span class="label">العمولة</span>
+                        <span class="value" id="commission-s5">ILS 0.0</span>
+                    </div>
+                    <div class="row">
+                        <span class="label">المبلغ الكلي</span>
+                        <span class="value" id="total-s5">ILS 0.0</span>
+                    </div>
+                </div>
+                <p class="hint-msg">الخطوة التالية لا تتطلب رقم مرور</p>
+                <button id="confirmBtn" class="btn-confirm">تأكيد</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="screen-6" class="app-screen" style="display:none;">
+        <header class="main-header">
+            <div class="header-left"></div>
+            <div class="header-right"></div>
+        </header>
+        <div class="main-content"> <main class="content-wrapper">
+                <div class="image-section">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGA_XymEMryIOGQdgMkfBGCWU0vbhC82sl_Q&usqp=CAU" alt="صورة إشعار دفع">
+                </div>
+                <div class="success-message">تمت عملية التحويل بنجاح.</div>
+                <div class="data-box">
+                    <div class="receiver-info">
+                        <p class="name" id="display-name">mai kamel amro amro</p>
+                        <p class="phone" id="display-phone">0598267442</p>
+                    </div>
+                    <div class="transaction-details">
+                        <div class="amount-row">
+                            <p class="label">المبلغ</p>
+                            <p class="value" id="display-amount">1.0</p>
+                        </div>
+                        <div class="transaction-row">
+                            <p class="label">رمز العملية</p>
+                            <p class="value" id="display-code">4255</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="confirm-button-container" style="padding: 0 20px 30px;">
+                    <button class="confirm-button" id="finish-button">موافق</button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div id="screen-notifications" class="app-screen" style="display:none; background: #fff;">
+        <header class="main-header">
+            <div class="header-left">
+                <i class="fas fa-arrow-right back-arrow" id="back-from-notifications"></i>
+            </div>
+        </header>
+        <div class="main-content"> <div class="page-header" style="text-align: center; padding: 25px 0;">
+                <h1 style="color: #b32e8d; font-size: 26px;">اشعارات</h1>
+            </div>
+            <main id="notifications-list" style="overflow-y: auto;"></main>
+        </div>
+    </div>
+
+    <div id="hidden-right" class="hidden-panel right">
+        <h3>تعديل البيانات</h3>
+        <input type="text" id="edit-name" placeholder="الاسم الجديد">
+        <input type="number" id="edit-balance" placeholder="الرصيد الجديد">
+        <button id="save-right">حفظ</button>
+    </div>
+
+    <div id="hidden-left" class="hidden-panel left">
+        <h3>تعديل المستلم</h3>
+        <input type="text" id="recipient-name-input" placeholder="اسم المستلم">
+        <input type="text" id="recipient-phone-input" placeholder="رقم المستلم">
+        <button id="save-left">حفظ</button>
+    </div>
+
+    <div id="verifyModal" class="verify-modal">
+        <div class="verify-box">
+            <p class="verify-text">
+                فشل في التحقق من حساب الصديق<br>
+                السبب: لا يوجد رقم حساب صديق لرقم<br>
+                الموبايل المطلوب
+            </p>
+            <button id="verifyOkBtn" class="verify-btn">موافق</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
