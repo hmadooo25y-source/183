@@ -16,7 +16,7 @@ body {
 
 /* ===================== الهيدر ===================== */
 .main-header {
-    background-color: #210519;
+    background-color: #2B232A;
     height: 55px;
     display: flex;
     justify-content: space-between;
@@ -709,21 +709,34 @@ body {
 }
 
 .custom-loader {
-    display: block;
-    border: 5px solid rgba(33, 5, 25, 0.1); 
-    border-top: 5px solid #210519; /* لون الهيدر */
+    width: 45px;
+    height: 45px;
+    /* إخفاء الحدود تماماً */
+    border: 4px solid transparent; 
+    /* تلوين جزء واحد فقط ليظهر كخيط أو قوس له بداية ونهاية */
+    border-top: 4px solid #2B232A; 
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 2s linear infinite;
     
-    /* التوسيط المطلق */
+    /* دوران مستمر ومنتظم */
+    animation: spin 0.7s linear infinite;
+    
+    /* التوسيط فوق المحتوى */
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    margin-top: -22px;
+    margin-left: -22px;
+    z-index: 9999;
     
-    z-index: 9999; /* لضمان ظهورها فوق كل شيء */
+    /* إلغاء أي تأثيرات إضافية */
+    pointer-events: none; /* يسمح بالضغط على ما تحته */
+}
+
+/* حذف أي تأثيرات خلفية (Pseudo-elements) */
+.custom-loader::before, 
+.custom-loader::after {
+    display: none !important;
+    content: none !important;
 }
 
 /* ===================== واجهة الإشعارات (المضافة) ===================== */
@@ -764,51 +777,4 @@ position: sticky;
 .notification-card {
     padding: 18px 20px;
     border-bottom: 1px solid #f2f2f2;
-    transition: background 0.2s;
-    cursor: pointer;
-}
-
-.notification-card:active {
-    background-color: #f9f9f9;
-}
-
-/* تفاصيل البطاقة */
-.row-top {
-    display: flex;
-    justify-content: space-between;
-    color: #3b5998; /* لون أزرق رسمي للمعاملات */
-    font-weight: bold;
-    font-size: 15px;
-    margin-bottom: 5px;
-}
-
-.date {
-    font-size: 13px;
-    color: #777;
-    font-family: Arial, sans-serif;
-}
-
-.row-dot {
-    display: flex;
-    justify-content: flex-end;
-    margin: 4px 0;
-}
-
-.green-dot {
-    width: 9px;
-    height: 9px;
-    background-color: #a2d149;
-    border-radius: 50%;
-}
-
-.row-text {
-    font-size: 14px;
-    color: #333;
-    line-height: 1.6;
-    text-align: right;
-}
-
-.amount-bold {
-    font-weight: 700;
-    color: #000;
-}
+    
