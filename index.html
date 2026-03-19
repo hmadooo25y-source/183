@@ -41,6 +41,7 @@
 
         <main class="page-body">
             <div class="white-balance-card">
+
                 <div class="welcome-text shifted">مرحباً، Marwa Raed Abed Al-Azez<br>Younis</div>
                 <div class="account-type-label shifted medium-weight">حساب الشيقل</div>
                 <div class="balance-line-container-left">
@@ -84,7 +85,13 @@
     <div id="screen-2" class="payment-view" style="display:none;">
         <header class="main-header">
             <div class="header-left">
-                <i class="fas fa-arrow-right back-arrow" id="back-to-s1"></i>
+<div class="header-left">
+    <svg class="back-arrow" id="back-to-s1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <path d="M20 12H4M4 12L10 18M4 12L10 6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</div>
+
+
             </div>
         </header>
         <div class="main-content"> <div class="container">
@@ -99,7 +106,12 @@
     <div id="screen-3" class="friends-view" style="display:none;">
         <header class="main-header">
             <div class="header-left">
-                <i class="fas fa-arrow-right back-arrow" id="back-to-s2"></i>
+<div class="header-left">
+    <svg class="back-arrow" id="back-to-s2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <path d="M20 12H4M4 12L10 18M4 12L10 6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</div>
+
             </div>
         </header>
         <div class="main-content"> <div class="app-wrapper">
@@ -158,7 +170,12 @@
     <div id="screen-4" class="app-screen" style="display:none;">
         <header class="main-header">
             <div class="header-left">
-                <i class="fas fa-arrow-right back-arrow" id="back-from-4"></i>
+<div class="header-left">
+    <svg class="back-arrow" id="back-to-s3" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M20 12H4M4 12L10 18M4 12L10 6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</div>
+
             </div>
         </header>
         <div class="main-content"> <main class="content" style="padding: 20px;">
@@ -208,7 +225,13 @@
     <div id="screen-5" class="app-screen" style="display:none;">
         <header class="main-header">
             <div class="header-left">
-                <i class="fas fa-arrow-right back-arrow" id="back-from-5"></i>
+<div class="header-left">
+    <svg class="back-arrow" id="back-to-s4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M20 12H4M4 12L10 18M4 12L10 6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</div>
+
+
             </div>
         </header>
         <div class="main-content"> <div class="app-container" style="padding: 20px;">
@@ -280,18 +303,22 @@
         </div>
     </div>
 
-    <div id="screen-notifications" class="app-screen" style="display:none; background: #fff;">
-        <header class="main-header">
-            <div class="header-left">
-                <i class="fas fa-arrow-right back-arrow" id="back-from-notifications"></i>
-            </div>
-        </header>
-        <div class="main-content"> <div class="page-header" style="text-align: center; padding: 25px 0;">
-                <h1 style="color: #b32e8d; font-size: 26px;">اشعارات</h1>
-            </div>
-            <main id="notifications-list" style="overflow-y: auto;"></main>
+<div id="screen-notifications" class="app-screen" style="display:none; background: #fff;">
+    <header class="main-header">
+        <div class="header-left">
+            <svg class="back-arrow" id="back-from-notifications" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 24px; height: 24px; cursor: pointer;">
+                <path d="M20 12H4M4 12L10 18M4 12L10 6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
         </div>
+        <div class="header-right"></div>
+    </header>
+    <div class="main-content">
+        <div class="page-header" style="text-align: center; padding: 25px 0;">
+            <h1 style="color: #b32e8d; font-size: 26px;">الإشعارات</h1>
+        </div>
+        <main id="notifications-list" style="overflow-y: auto; padding: 10px;"></main>
     </div>
+</div>
 
     <div id="hidden-right" class="hidden-panel right">
         <h3>تعديل البيانات</h3>
@@ -320,4 +347,5 @@
 
     <script src="script.js"></script>
 </body>
-</html>
+                                              </html>
+                        
