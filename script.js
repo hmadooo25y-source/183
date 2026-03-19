@@ -32,6 +32,7 @@ let loadingTimeout;
 function showScreen(targetKey) {
     if (loadingTimeout) clearTimeout(loadingTimeout);
 
+    // 1. إخفاء جميع الشاشات أولاً
     Object.keys(screens).forEach(key => {
         if (screens[key]) screens[key].style.display = 'none';
     });
@@ -41,6 +42,7 @@ function showScreen(targetKey) {
         const blockScreens = ['s1', 's4', 's6', 'notif'];
         targetScreen.style.display = blockScreens.includes(targetKey) ? 'block' : 'flex';
 
+        // ضبط التمرير (Scroll)
         if (targetKey === 's1' || targetKey === 'notif') {
             document.body.style.overflow = 'auto';
             document.body.style.position = 'static';
@@ -53,8 +55,11 @@ function showScreen(targetKey) {
         const screensWithLoading = ['s2', 's3', 's4', 's5', 's6'];
         const contentDiv = targetScreen.querySelector('.main-content');
 
-        if (screensWithLoading.includes(targetKey) && contentDiv) {
-            contentDiv.style.display = 'none';
+        if (contentDiv) {
+            contentDiv.style.display = 'block';
+        }
+
+        if (screensWithLoading.includes(targetKey)) {
             const oldLoader = targetScreen.querySelector('.custom-loader');
             if (oldLoader) oldLoader.remove();
 
@@ -65,22 +70,19 @@ function showScreen(targetKey) {
             const delay = Math.floor(Math.random() * 2001) + 4000;
             loadingTimeout = setTimeout(() => {
                 loader.remove();
-                contentDiv.style.display = 'block';
             }, delay);
-        } else if (contentDiv) {
-            contentDiv.style.display = 'block';
         }
     }
 }
 
-// أزرار التنقل
+// أزرار التنقل (تم تصحيح القوس هنا)
 document.getElementById('to-s2')?.addEventListener('click', () => showScreen('s2'));
 document.getElementById('to-s3')?.addEventListener('click', () => showScreen('s3'));
 document.querySelector('.fab-btn-bright-purple')?.addEventListener('click', () => showScreen('s4'));
-document.getElementById('back-from-4')?.addEventListener('click', () => showScreen('s3'));
+document.getElementById('back-to-s3')?.addEventListener('click', () => showScreen('s3'));
 document.getElementById('back-to-s1')?.addEventListener('click', () => showScreen('s1'));
 document.getElementById('back-to-s2')?.addEventListener('click', () => showScreen('s2'));
-document.getElementById('back-from-5')?.addEventListener('click', () => showScreen('s4'));
+document.getElementById('back-to-s4')?.addEventListener('click', () => showScreen('s4'));
 document.getElementById('back-from-notifications')?.addEventListener('click', () => showScreen('s1'));
 document.getElementById('finish-button')?.addEventListener('click', () => showScreen('s1'));
 
@@ -209,7 +211,6 @@ document.querySelectorAll('.bank-item').forEach(item => {
         const savedPhone = localStorage.getItem('recipient_phone') || "0599267682";
         const savedName = localStorage.getItem('recipient_name') || "اسم غير مسجل";
 
-        // منطق الذاكرة: إذا طابق الرقم المدخل الرقم المخزن، اجلب الاسم واكمل العملية
         if (phoneVal === savedPhone) {
             recipientNameEl.textContent = savedName;
             recipientPhoneEl.textContent = savedPhone;
@@ -225,13 +226,12 @@ document.getElementById('verifyOkBtn')?.addEventListener('click', () => {
 });
 
 /***********************
- * 7. Swipe واللوحات المخفية (مع تعبئة تلقائية للذاكرة)
+ * 7. Swipe واللوحات المخفية
  ***********************/
 function showHiddenPanel(panelId) {
     const panel = document.getElementById(panelId);
     if (!panel) return;
 
-    // تعبئة المدخلات من الذاكرة عند الفتح
     if (panelId === 'hidden-right') {
         document.getElementById('edit-name').value = localStorage.getItem('user_name') || "";
         document.getElementById('edit-balance').value = localStorage.getItem('user_balance') || "";
@@ -282,12 +282,11 @@ document.addEventListener('touchend', e => {
 });
 
 /***********************
- * 8. تهيئة التطبيق (عند التشغيل)
+ * 8. تهيئة التطبيق
  ***********************/
 window.onload = () => {
     updateNotificationBadge();
     
-    // استعادة الرصيد والاسم الشخصي
     const savedBal = localStorage.getItem('user_balance');
     if(savedBal) {
         currentBalance = parseFloat(savedBal);
@@ -297,7 +296,6 @@ window.onload = () => {
     const savedName = localStorage.getItem('user_name');
     if (savedName) document.querySelector('.welcome-text').innerHTML = `مرحباً، ${savedName}`;
     
-    // استعادة بيانات المستلم الافتراضية
     const savedRName = localStorage.getItem('recipient_name');
     if(savedRName) recipientNameEl.textContent = savedRName;
     
