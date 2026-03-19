@@ -57,12 +57,15 @@ body {
 }
 
 .back-arrow {
-    font-size: 22px;
-    color: #fff;
-    margin-left: 12px;
-    font-weight: 400;
-    cursor: pointer;
+   font-size: 22px;      /* حجم السهم ليكون واضحاً كما في Hhhhhh */
+    color: #ffffff;       /* اللون الأبيض */
+    margin-left: 12px;    /* مسافة من جهة اليمين بما أن الاتجاه RTL */
+    font-weight: 400;     /* سمك الخط الخاص بالأيقونة */
+    cursor: pointer;      /* لإظهار شكل اليد عند تمرير الماوس */
+    display: flex;
+    align-items: center;
 }
+
 
 /* ===================== شاشات التطبيق ===================== */
 .app-screen, .payment-view, #screen-3, #screen-4, #screen-5, #screen-6 {
@@ -762,19 +765,4 @@ position: sticky;
     z-index: 101;
 
 .page-header h1 {
-    color: #b32e8d; /* اللون الوردي المعتمد في هويتك */
-    margin: 0;
-    font-size: 26px;
-    font-weight: 600;
-}
-
-/* قائمة الإشعارات */
-#notifications-list {
-    flex: 1;
-    overflow-y: auto;
-}
-
-.notification-card {
-    padding: 18px 20px;
-    border-bottom: 1px solid #f2f2f2;
-    
+    color: #b32e8d; /* اللون الوردي الم
