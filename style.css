@@ -56,13 +56,6 @@ body {
     font-weight: bold;
 }
 
-.back-arrow {
-    font-size: 22px;
-    color: #fff;
-    margin-left: 12px;
-    font-weight: 400;
-    cursor: pointer;
-}
 
 /* ===================== شاشات التطبيق ===================== */
 .app-screen, .payment-view, #screen-3, #screen-4, #screen-5, #screen-6 {
@@ -777,35 +770,8 @@ position: sticky;
 .notification-card {
     padding: 18px 20px;
     border-bottom: 1px solid #f2f2f2;
-    /* تنسيق سهم العودة لضمان الظهور في نسخة التطبيق */
-.back-arrow {
-    width: 26px !important; /* تكبير بسيط لسهولة اللمس في الجوال */
-    height: 26px !important;
-    display: inline-block !important; 
-    visibility: visible !important;
-    opacity: 1 !important;
-    cursor: pointer;
-    z-index: 9999 !important; /* يضمن ظهوره فوق كل الطبقات */
     
-    /* حل مشكلة الاتجاه في RTL */
-    transform: scaleX(-1); 
-    -webkit-transform: scaleX(-1); /* لدعم متصفحات الجوال القديمة */
-}
-
-/* التأكد من أن الحاوية لا تخفي المحتوى */
-.header-left {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    min-width: 45px;
-    min-height: 45px;
-    overflow: visible !important;
-}
-
-/* منع اختفاء الهيدر في بعض وضعيات الجوال */
-.main-header {
-    position: sticky !important;
-    top: 0;
-    overflow: visible !important;
-}
-    
+/* تنسيق أيقونة العودة الجديد المخصص للتطبيق */
+.back-arrow-icon {
+    color: #ffffff !important; /* لون أبيض */
+    fo
